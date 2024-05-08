@@ -2,7 +2,8 @@
 
 This repository explains the steps involved in creating and hosting a LEMP server on AWS. An open-source web application stack called LEMP is used to create websites. The abbreviation LEMP stands for Linux Operating System, Nginx (pronounced engine-x, hence the E in the acronym), MySQL Database, and PHP Scripting Language.
 
-![picture](image.png)
+![picture](./Images/image.png)
+
 ---
 ---
 
@@ -14,16 +15,16 @@ This repository explains the steps involved in creating and hosting a LEMP serve
 
 3- Select your preferred region (the closest to you) and launch a new EC2 instance of t2.micro family with Ubuntu Server 20.04 LTS (HVM)
 
-![picture](image-1.png)
+![picture](./Images/image-1.png)
 
 4- Click create a new key pair, use any name of your choice as the name for the pem file and select .pem.
 
 *   Linux/Mac users, choose .pem for use with openssh. This allows you to connect to your server using open ssh clients.
 
-![picture](image-2.png)
+![picture](./Images/image-2.png)
 
 
-![alt text](image-3.png)
+![picture](./Images/image-3.png)
 
 *   For windows users choose .ppk for use with putty. Putty is a software that lets you connect remotely to servers
 
@@ -31,32 +32,32 @@ This repository explains the steps involved in creating and hosting a LEMP serve
 
 see the below images.
 
-![alt text](image-5.png)
+
+![picture](./Images/image-5.png)
+
+![picture](./Images/image-6.png)
 
 
-![alt text](image-6.png)
-
-
-![alt text](image-7.png)
+![picture](./Images/image-7.png)
 
 6- Make sure you enable 
 *   create security group
 *   Allow SSH traffic 
 
-![alt text](image-8.png)
+![picture](./Images/image-8.png)
 
 
 7- Configure storage 
 
-![alt text](image-9.png)
+![picture](./Images/image-9.png)
 
 8- Launche your instance
 
-![alt text](image-10.png)
+![picture](./Images/image-10.png)
 
 9- Check your EC2 instance is up and running
 
-![alt text](image-11.png)
+![picture](./Images/image-11.png)
 
 10- On your local computer, open the terminal and change directory to the Downloads folder, type
 
@@ -65,7 +66,7 @@ see the below images.
 
         `sudo chmod 0600 <private-key-name>. pem`
 
-![alt text](image-12.png)
+![picture](./Images/image-12.png)
 
 12- Connect to the instance by running
 
@@ -73,20 +74,21 @@ see the below images.
 
 Note: For Ubuntu server, the usernanme is ubuntu and for other servers like Fedora Amazon Machine image (AMI), the username is fedora or ec2-user. Congratulations! You have just created your very first Linux Server in the Cloud and our set up looks like this now: (You are the client)
 
-![alt text](image-13.png)
+![picture](./Images/image-13.png)
 
 ### tep 2: Installing Apache and Updating the Firewall
 1- First, update the server using the command
 
         `sudo apt update`
 
-![alt text](./L-1.png)
+![alt text](./Images/L-1.png)
+
 
 2- Now, install nginx using the command below
 
         `sudo apt install nginx`
 
-![alt text](./L-2.png)
+![alt text](./Images/L-2.png)
 
 3- Check the status of the nginx service
 
@@ -100,15 +102,15 @@ Note: For Ubuntu server, the usernanme is ubuntu and for other servers like Fedo
 
         `curl http://127.0.0.1:80`
 
-![picture](./L-3.png) 
+![alt text](./Images/L-3.png) 
 
-![picture](./L-4.png)
+![alt text](./Images/L-4.png)
 
 5- Open a web browser of your choice and try to access following url
 
         `http://<Public-IP-Address>:80`
 
-![picture](./L-5.png)
+![alt text](./Images/L-5.png)
 
  6- You can also retrieve your ip address instead of checking the aws console using cURL as in the command below
 
@@ -122,7 +124,7 @@ Now that you have a web server up and running, you need to install a Relational 
 
         `sudo apt install mysql-server`
 
-![picture](./L-6.png) 
+![alt text](./Images/L-6.png) 
 
 2- When the installation is finished, log in to the MySQL console by typing:
 
@@ -150,7 +152,7 @@ You have Nginx installed to serve your content and MySQL installed to store and 
 
         `sudo apt install php-fpm php-mysql -y`
 
-![picture](./L-7.png)
+![alt text](./Images/L-7.png)
 ---
 ---
 
@@ -163,7 +165,7 @@ When using the Nginx web server, we can create server blocks (similar to virtual
 
         ` cd /var/www/projectLEMP`
         
-![picture](./L-8.png)
+![alt text](./Images/L-8.png)
 
 2- Next, Give recursive ownership of the directory with the $USER environment variable, which will reference your current system user:
 
@@ -202,7 +204,7 @@ Paste in the following bare-bones configuration:
 
 press esc key, :wq! to save and exit.        
 
-![picture](./L-9.png) 
+![alt text](./Images/L-9.png) 
 
 4- Next, Activate your configuration by linking to the config file from Nginx’s sites-enabled directory:
 
@@ -212,13 +214,13 @@ press esc key, :wq! to save and exit.
 
         `sudo nginx -t`
 
-![picture](./L-10.png)
+![alt text](./Images/L-10.png)
 
 5- We also need to disable default Nginx host that is currently configured to listen on port 80, for this run:
 
         `sudo unlink /etc/nginx/sites-enabled/default`
 
-![picture](./L-11.png)        
+![alt text](./Images/L-11.png)        
 ---       
 ---
 ### Step 6 - Testing PHP with nginx
@@ -241,13 +243,13 @@ Then reload and check the status of the nginx service using the following comman
 
         `sudo systemctl status nginx`
 
-![picture](./L-12.png) 
+![alt text](./Images/L-12.png) 
 
 3- You can now access this page in your web browser by visiting the domain name or public IP address you’ve set up in your Nginx configuration file, followed by /info.php: 
 
         http://server_domain_or_IP/info.php
 
-![picture](./L-13.png)        
+![alt text](./Images/L-13.png)        
 
 4- You will see a web page containing detailed information about your server: After checking the relevant information about your PHP server through that page, it’s best to remove the file you created as it contains sensitive information about your PHP environment and your Ubuntu server. You can use rm to remove that file:
 
@@ -264,13 +266,13 @@ Then reload and check the status of the nginx service using the following comman
 
         `CREATE DATABASE lemp_database`
 
-       
+  ![alt text](./Images/L-14.png)     
 
 3- create a new user and grant him full privileges on the database you have just created. For security reasons I will be using a simple username and password which is different from the one in my actual configuration
 
         `CREATE USER 'admin_user'@'%' IDENTIFIED WITH mysql_native_password BY 'Password@123';`
 
-![picture](./L-15.png) 
+![alt text](./Images/L-15.png) 
 
 4- Now we need to give this user permission over the example_database database:
 
@@ -286,7 +288,7 @@ This will give the example_user user full privileges over the example_database d
 
         `mysql -u example_user -p`
 
-![picture](./L-16.png)        
+![alt text](./Images/L-16.png)       
 
 *   NB: Notice the -p flag in this command, which will prompt you for the password used when creating the example_user user.
 
@@ -307,7 +309,7 @@ Insert a few rows of content in the test table. You might want to repeat the nex
 
         `SELECT * FROM example_database.todo_list;`
 
- ![picture](./L-17.png) 
+ ![alt text](./Images/L-17.png) 
 
 7- After confirming that you have valid data in your test table, you can exit the MySQL console:
 
@@ -338,7 +340,7 @@ The following PHP script connects to the MySQL database and queries for the cont
         }
 
 
-![picture](./L-18.png)
+![alt text](./Images/L-18.png)
 
 *   Save and close the file when you are done editing.
 
@@ -351,7 +353,7 @@ The following PHP script connects to the MySQL database and queries for the cont
 
 You should see a page like this, showing the content you’ve inserted in your test table:
 
-![picture](./L-19.png)
+![alt text](./Images/L-19.png)
 
 
 Well done, Your PHP environment is ready to connect and interact with your MySQL server.
